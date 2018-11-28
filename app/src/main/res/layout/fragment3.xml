@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/frag3_Layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:gravity="center|bottom"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:gravity="center"
+            android:text="이용안내"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+<LinearLayout
+    android:id="@+id/frag3_SpLayout"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/frag3_Layout"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:background="@drawable/spinner_layout">
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/frag3_Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/gold"/>
+</LinearLayout>
+    <ImageView
+        android:id="@+id/frag3_Img"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frag3_SpLayout" />
+</android.support.constraint.ConstraintLayout>
+</layout>
