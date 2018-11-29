@@ -1,5 +1,6 @@
 package com.spacemonster.book.mentors;
 
+import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.Point;
@@ -10,12 +11,15 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.Toast;
 
+import com.spacemonster.book.mentors.Dialog.CustomDialog_Finish;
 import com.spacemonster.book.mentors.Fragment.FirstFragment;
 import com.spacemonster.book.mentors.Fragment.FourthFragment;
 import com.spacemonster.book.mentors.Fragment.SecondFragment;
@@ -30,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     ThirdFragment fragment3 = new ThirdFragment();
     FourthFragment fragment4 = new FourthFragment();
     MenuItem prevMenuItem;
-    MainActivity mainActivity;
+    public static MainActivity main;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
 //            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
 
-        mainActivity = MainActivity.this;
+        main = MainActivity.this;
+
         loginBtn();
         FragmentAdapter();
 
@@ -131,5 +136,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    //뒤로가기 버튼
+    @Override
+    public void onBackPressed() {
+//        CustomDialog_Finish finish = new CustomDialog_Finish(MainActivity.this);
+//        finish.CallDialog();
 
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("");
+        builder.setMessage("종료하시겠습니까?")
+                .setCancelable(false)
+                .setPositiveButton("취소", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setNegativeButton("종료", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        finish();
+                        dialogInterface.dismiss();
+                    }
+                });
+        AlertDialog dialog = builder.create();
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.show();
+    }
 }

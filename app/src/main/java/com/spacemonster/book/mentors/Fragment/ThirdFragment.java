@@ -36,31 +36,31 @@ public class ThirdFragment extends Fragment {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i){
                     case 0:
-                        binding.frag3Img.setImageResource(R.drawable.test1);
+                        binding.frag3Img.setImageResource(R.drawable.info01);
                         break;
                     case 1:
-                        binding.frag3Img.setImageResource(R.drawable.test2);
+                        binding.frag3Img.setImageResource(R.drawable.info02);
                         break;
                     case 2:
-                        binding.frag3Img.setImageResource(R.drawable.test1);
+                        binding.frag3Img.setImageResource(R.drawable.info03);
                         break;
                     case 3:
-                        binding.frag3Img.setImageResource(R.drawable.test2);
+                        binding.frag3Img.setImageResource(R.drawable.info04);
                         break;
                     case 4:
-                        binding.frag3Img.setImageResource(R.drawable.test1);
+                        binding.frag3Img.setImageResource(R.drawable.info05);
                         break;
                     case 5:
-                        binding.frag3Img.setImageResource(R.drawable.test2);
+                        binding.frag3Img.setImageResource(R.drawable.info06);
                         break;
                     case 6:
-                        binding.frag3Img.setImageResource(R.drawable.test1);
+                        binding.frag3Img.setImageResource(R.drawable.info07);
                         break;
                     case 7:
-                        binding.frag3Img.setImageResource(R.drawable.test2);
+                        binding.frag3Img.setImageResource(R.drawable.info08);
                         break;
                     case 8:
-                        binding.frag3Img.setImageResource(R.drawable.test1);
+                        binding.frag3Img.setImageResource(R.drawable.info09);
                         break;
                 }
             }

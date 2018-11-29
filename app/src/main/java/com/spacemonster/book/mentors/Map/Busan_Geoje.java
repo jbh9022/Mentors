@@ -75,13 +75,14 @@ public class Busan_Geoje extends PagerAdapter {
         }
         //프로코프석
         layout1Click();
-        //시그너스석
+        //시그너스 1 석
         layout2Click();
-        //멘토르1석
+        //시그너스 2 석
         layout3Click();
-        //멘토르2석
+        //멘토르 1 석
         layout4Click();
-
+        //멘토르 2 석
+        layout5Click();
         ViewPager vp = (ViewPager) container;
         vp.addView(view);
 
@@ -101,24 +102,43 @@ public class Busan_Geoje extends PagerAdapter {
         binding.busanGeogeLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for(int i =0; i<29; i++){
+                for(int i =0; i<47; i++){
                     layouts[i].setBackgroundResource(R.color.gray);
                     textViews[i].setTextColor(Color.BLACK);
                 }
-                for(int i=29;i<79; i++){
-                    layouts[i].setBackgroundResource(R.drawable.frag2_layout1);
+                for(int i=47;i<79; i++){
+                    layouts[i].setBackgroundResource(R.drawable.bgeoje_layout1);
                     textViews[i].setTextColor(view.getResources().getColor(R.color.red));
                 }
             }
         });
     }
-    //시그너스석 클릭시
-    private void layout2Click(){
+    public void layout2Click(){
         binding.busanGeogeLayout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for(int i =0; i<29; i++){
+                    layouts[i].setBackgroundResource(R.color.gray);
+                    textViews[i].setTextColor(Color.BLACK);
+                }
+                for(int i=29;i<47; i++){
+                    layouts[i].setBackgroundResource(R.drawable.bgeoje_layout2);
+                    textViews[i].setTextColor(view.getResources().getColor(R.color.blue));
+                }
+                for(int i=47;i<79; i++){
+                    layouts[i].setBackgroundResource(R.color.gray);
+                    textViews[i].setTextColor(view.getResources().getColor(R.color.black));
+                }
+            }
+        });
+    }
+    //시그너스석 클릭시
+    private void layout3Click(){
+        binding.busanGeogeLayout3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 for(int i =0; i<5; i++){
-                    layouts[i].setBackgroundResource(R.drawable.frag2_layout2);
+                    layouts[i].setBackgroundResource(R.drawable.bgeoje_layout3);
                     textViews[i].setTextColor(view.getResources().getColor(R.color.green));
                 }
                 for(int i =5; i<10; i++){
@@ -126,7 +146,7 @@ public class Busan_Geoje extends PagerAdapter {
                     textViews[i].setTextColor(Color.BLACK);
                 }
                 for(int i=10;i<19; i++){
-                    layouts[i].setBackgroundResource(R.drawable.frag2_layout2);
+                    layouts[i].setBackgroundResource(R.drawable.bgeoje_layout3);
                     textViews[i].setTextColor(view.getResources().getColor(R.color.green));
                 }
                 for(int i=19;i<26; i++){
@@ -134,7 +154,7 @@ public class Busan_Geoje extends PagerAdapter {
                     textViews[i].setTextColor(Color.BLACK);
                 }
                 for(int i=26;i<29; i++){
-                    layouts[i].setBackgroundResource(R.drawable.frag2_layout2);
+                    layouts[i].setBackgroundResource(R.drawable.bgeoje_layout3);
                     textViews[i].setTextColor(view.getResources().getColor(R.color.green));
                 }
                 for(int i=29;i<79; i++){
@@ -145,8 +165,8 @@ public class Busan_Geoje extends PagerAdapter {
         });
     }
     //멘토르 1석 클릭시
-    private void layout3Click(){
-        binding.busanGeogeLayout3.setOnClickListener(new View.OnClickListener() {
+    private void layout4Click(){
+        binding.busanGeogeLayout4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 for(int i =0; i<5; i++){
@@ -154,7 +174,7 @@ public class Busan_Geoje extends PagerAdapter {
                     textViews[i].setTextColor(Color.BLACK);
                 }
                 for(int i =5; i<9; i++){
-                    layouts[i].setBackgroundResource(R.drawable.frag2_layout3);
+                    layouts[i].setBackgroundResource(R.drawable.bgeoje_layout4);
                     textViews[i].setTextColor(view.getResources().getColor(R.color.yellow));
                 }
                 for(int i =9; i<21; i++){
@@ -162,7 +182,7 @@ public class Busan_Geoje extends PagerAdapter {
                     textViews[i].setTextColor(Color.BLACK);
                 }
                 for(int i =21; i<26; i++){
-                    layouts[i].setBackgroundResource(R.drawable.frag2_layout3);
+                    layouts[i].setBackgroundResource(R.drawable.bgeoje_layout4);
                     textViews[i].setTextColor(view.getResources().getColor(R.color.yellow));
                 }
                 for(int i =26; i<79; i++){
@@ -173,8 +193,8 @@ public class Busan_Geoje extends PagerAdapter {
         });
     }
     //멘토르2석 클릭시
-    private void layout4Click(){
-        binding.busanGeogeLayout4.setOnClickListener(new View.OnClickListener() {
+    private void layout5Click(){
+        binding.busanGeogeLayout5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 for(int i =0; i<9; i++){
@@ -189,11 +209,11 @@ public class Busan_Geoje extends PagerAdapter {
                     layouts[i].setBackgroundResource(R.color.gray);
                     textViews[i].setTextColor(Color.BLACK);
                 }
-                layouts[9].setBackgroundResource(R.drawable.frag2_layout4);
+                layouts[9].setBackgroundResource(R.drawable.bgeoje_layout5);
                 textViews[9].setTextColor(view.getResources().getColor(R.color.purple));
-                layouts[19].setBackgroundResource(R.drawable.frag2_layout4);
+                layouts[19].setBackgroundResource(R.drawable.bgeoje_layout5);
                 textViews[19].setTextColor(view.getResources().getColor(R.color.purple));
-                layouts[20].setBackgroundResource(R.drawable.frag2_layout4);
+                layouts[20].setBackgroundResource(R.drawable.bgeoje_layout5);
                 textViews[20].setTextColor(view.getResources().getColor(R.color.purple));
             }
         });

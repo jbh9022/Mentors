@@ -1,8 +1,12 @@
 package com.spacemonster.book.mentors.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,33 +17,31 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.spacemonster.book.mentors.Model.Notice;
+import com.spacemonster.book.mentors.NewsViewActivity;
 import com.spacemonster.book.mentors.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>{
     Context context;
     int layout;
+    ArrayList<Notice> newsView = new ArrayList<Notice>();
 
-    ArrayList<Notice> notices = new ArrayList<Notice>();
-    String a = "공지~~~~~~~~~~~~";
-    String banner1 = "http://jbh9022.cafe24.com/img/banner03.jpg";
-    String banner2 = "http://jbh9022.cafe24.com/img/banner02.jpg";
-    ArrayList<String> list1 = new ArrayList<>();
-    ArrayList<Object> list2 = new ArrayList<>();
-
-    public NewsAdapter(Context context, int layout) {
+    public NewsAdapter(Context context, int layout, ArrayList<Notice> newsView) {
         this.context = context;
         this.layout = layout;
-        list1.add("공지1~~~~~~~~");
-        list1.add("공지2~~~~~~~~");
-        list1.add("공지3~~~~~~~~");
-        list1.add("공지4~~~~~~~~");
-        list2.add(banner1);
-        list2.add(banner2);
-        list2.add(banner1);
-        list2.add(banner2);
+        this.newsView = newsView;
     }
 
     @NonNull
@@ -52,32 +54,41 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull NewsAdapter.ViewHolder holder, final int position) {
         RequestOptions options = new RequestOptions().fitCenter();
-        Glide.with(context).load(list2.get(position)).apply(options).into(holder.imgview);
+        final Notice notice = newsView.get(position);
+        Glide.with(context).load(notice.getImg()).apply(options).into(holder.imgview);
         holder.imgview.setScaleType(ImageView.ScaleType.FIT_XY);
-        holder.text1.setText(list1.get(position));
+        holder.text1.setText(notice.getNotice());
+        holder.text2.setText(notice.getTitle());
         final int a = position +1;
         //공지 클릭 -> 공지 내용
         holder.imgview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "소식!!!" + a, Toast.LENGTH_SHORT).show();
+                Intent newsView = new Intent(context, NewsViewActivity.class);
+                newsView.putExtra("News", notice.getWebAdd());
+                context.startActivity(newsView);
+//                Toast.makeText(context, "소식!!!" + a, Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return list1.size();
+        return newsView.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView imgview;
         TextView text1;
+        TextView text2;
 
         public ViewHolder(View view) {
             super(view);
             imgview = (ImageView)view.findViewById(R.id.view_Img);
-            text1 = (TextView) view.findViewById(R.id.view_Text2);
+            text1 = (TextView) view.findViewById(R.id.view_Text1);
+            text2 = (TextView) view.findViewById(R.id.view_Text2);
         }
     }
+
+
 }

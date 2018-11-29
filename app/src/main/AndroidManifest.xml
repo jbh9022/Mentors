@@ -7,9 +7,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_launcher_mentors"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_launcher_mentors_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".SplashActivity">
@@ -22,7 +22,8 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
-        <activity android:name=".NewsAllActivity"></activity>
+        <activity android:name=".NewsAllActivity" />
+        <activity android:name=".NewsViewActivity"></activity>
     </application>
 
 </manifest>

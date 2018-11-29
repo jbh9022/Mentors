@@ -48,7 +48,7 @@ public class SnsViewAdapter extends RecyclerView.Adapter<SnsViewAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         RequestOptions options = new RequestOptions().fitCenter();
         Glide.with(context).load(aa.get(position)).apply(options).into(holder.img1);
-        holder.img1.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        holder.img1.setScaleType(ImageView.ScaleType.FIT_XY);
         final int a = position+1;
         //이미지 클릭 -> SNS 연결
         holder.img1.setOnClickListener(new View.OnClickListener() {

@@ -1,27 +1,38 @@
 package com.spacemonster.book.mentors.Model;
 
 public class Notice {
-    String list1;
-    String list2;
-
-    public Notice(String list1, String list2) {
-        this.list1 = list1;
-        this.list2 = list2;
+    private String id;
+    private String notice;
+    private String title;
+    private String webAdd;
+    private String img;
+    public static final String URL = "http://jbh9022.cafe24.com/NewsView.php";
+    public static final String URL2 = "http://jbh9022.cafe24.com/NewsViewAll.php";
+    public Notice(String id, String notice, String title, String webAdd, String img) {
+        this.id = id;
+        this.notice = notice;
+        this.title = title;
+        this.webAdd = webAdd;
+        this.img = img;
     }
 
-    public String getList1() {
-        return list1;
+    public String getId() {
+        return id;
     }
 
-    public String getList2() {
-        return list2;
+    public String getNotice() {
+        return notice;
     }
 
-    public void setList1(String list1) {
-        this.list1 = list1;
+    public String getTitle() {
+        return title;
     }
 
-    public void setList2(String list2) {
-        this.list2 = list2;
+    public String getWebAdd() {
+        return webAdd;
+    }
+
+    public String getImg() {
+        return img;
     }
 }

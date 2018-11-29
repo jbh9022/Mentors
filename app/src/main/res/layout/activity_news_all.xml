@@ -12,11 +12,19 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/news_Bar"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="80dp"
         android:background="@drawable/newsbar_custom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/mark2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
         <ImageView
             android:id="@+id/news_HomeBtn"
             android:layout_width="40dp"
@@ -30,7 +38,7 @@
         <LinearLayout
             android:id="@+id/news_Layout"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/newsbar_custom2"

@@ -57,7 +57,7 @@ public class BannerAdapter extends PagerAdapter {
         banner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "배너 페이지", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "배너 페이지", Toast.LENGTH_SHORT).show();
             }
         });
         return view;
