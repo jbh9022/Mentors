@@ -9,5 +9,6 @@
     android:text="asdsa"
     android:gravity="center|start"
     android:paddingStart="20dp"
-    android:paddingLeft="20dp">
+    android:paddingLeft="20dp"
+    android:fontFamily="@font/notosanskr_medium_hestia">
 </TextView>

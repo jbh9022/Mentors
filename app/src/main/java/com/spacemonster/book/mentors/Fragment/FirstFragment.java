@@ -23,6 +23,7 @@ import com.spacemonster.book.mentors.Adapter.BannerAdapter;
 import com.spacemonster.book.mentors.Adapter.NewsAdapter;
 import com.spacemonster.book.mentors.Adapter.SnsViewAdapter;
 import com.spacemonster.book.mentors.Model.Notice;
+import com.spacemonster.book.mentors.Model.Sns;
 import com.spacemonster.book.mentors.NewsAllActivity;
 import com.spacemonster.book.mentors.R;
 import com.spacemonster.book.mentors.databinding.Fragment1Binding;
@@ -110,8 +111,9 @@ public class FirstFragment extends Fragment {
     //SNS 리사이클러뷰
     private void SNSView(){
         binding.freg1SnsView.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        snsAdapter = new SnsViewAdapter(getContext());
-        binding.freg1SnsView.setAdapter(snsAdapter);
+        SnsGent snsGent = new SnsGent();
+        snsGent.execute();
+
     }
     //타이머-배너 자동 전환
     public class ImgTimer extends TimerTask {
@@ -179,6 +181,45 @@ public class FirstFragment extends Fragment {
                     newsAdapter.notifyDataSetChanged();
                 }
 
+            }
+        }
+    }
+    public class SnsGent extends AsyncTask<String, Void, Sns[]>{
+
+        @Override
+        protected Sns[] doInBackground(String... strings) {
+            String url = "";
+            RequestBody body = new FormBody.Builder().build();
+            OkHttpClient client = new OkHttpClient();
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+            try{
+                Response response = client.newCall(request).execute();
+                Gson gson = new Gson();
+                JsonParser parser = new JsonParser();
+                JsonElement rootObject = parser.parse(response.body().charStream()).getAsJsonObject().get("");
+
+                Sns[] sns = gson.fromJson(rootObject, Sns[].class);
+                return sns;
+            }
+            catch (IOException e) {
+                Log.d("FetchPostsTask", e.getMessage());
+                return null;
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(Sns[] sns) {
+            super.onPostExecute(sns);
+            if(sns.length>0){
+                for(Sns sns1 : sns){
+                    snsAdapter = new SnsViewAdapter(getContext());
+                    binding.freg1SnsView.setAdapter(snsAdapter);
+                    snsAdapter.notifyDataSetChanged();
+                }
             }
         }
     }

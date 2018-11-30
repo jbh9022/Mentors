@@ -10,7 +10,7 @@
     <android.support.constraint.ConstraintLayout
         android:id="@+id/view_Card"
         android:layout_width="170dp"
-        android:layout_height="140dp">
+        android:layout_height="145dp">
 
         <ImageView
             android:id="@+id/view_Img"
@@ -33,18 +33,20 @@
             android:textSize="10dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view_Img" />
+            app:layout_constraintTop_toBottomOf="@+id/view_Img"
+            android:fontFamily="@font/notosanskr_medium_hestia"/>
 
         <TextView
             android:id="@+id/view_Text2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_margin="3dp"
             android:text="공지사항 내용"
             android:textSize="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/view_Text1"
-            android:singleLine="true"/>
+            android:singleLine="true"
+            android:fontFamily="@font/notosanskr_medium_hestia"/>
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
 </layout>

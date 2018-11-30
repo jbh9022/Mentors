@@ -20,9 +20,10 @@
                 android:layout_marginBottom="10dp"
                 android:text="좌석 선택"
                 android:textColor="@color/black"
-                android:textSize="30dp"
+                android:textSize="25dp"
                 android:textStyle="bold"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:fontFamily="@font/notosanskr_medium_hestia"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/frag2_SpLayout"

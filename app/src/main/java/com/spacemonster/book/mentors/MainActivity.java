@@ -1,9 +1,8 @@
 package com.spacemonster.book.mentors;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Color;
-import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,13 +12,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
-import com.spacemonster.book.mentors.Dialog.CustomDialog_Finish;
 import com.spacemonster.book.mentors.Fragment.FirstFragment;
 import com.spacemonster.book.mentors.Fragment.FourthFragment;
 import com.spacemonster.book.mentors.Fragment.SecondFragment;
@@ -59,7 +56,9 @@ public class MainActivity extends AppCompatActivity {
         binding.mainUserImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this, "로그인버튼", Toast.LENGTH_SHORT).show();
+                Intent intent_login = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent_login);
+//                Toast.makeText(MainActivity.this, "로그인버튼", Toast.LENGTH_SHORT).show();
             }
         });
     }

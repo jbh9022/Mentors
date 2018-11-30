@@ -1859,7 +1859,8 @@
                         android:text="프로코프석"
                         android:textColor="@color/red"
                         android:textSize="15dp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/notosanskr_medium_hestia"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -1879,9 +1880,10 @@
                         android:id="@+id/busanGeoge_text2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="시그너스 1 석"
+                        android:text="시그너스Ⅰ석"
                         android:textColor="@color/blue"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/notosanskr_medium_hestia"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -1901,7 +1903,8 @@
                         android:id="@+id/busanGeoge_text3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="시그너스 2 석"
+                        android:fontFamily="@font/notosanskr_medium_hestia"
+                        android:text="시그너스Ⅱ석"
                         android:textColor="@color/green"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -1923,7 +1926,8 @@
                         android:layout_height="wrap_content"
                         android:text="멘토르 Ⅰ 석"
                         android:textColor="@color/yellow"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/notosanskr_medium_hestia"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -1943,7 +1947,8 @@
                         android:layout_height="wrap_content"
                         android:text="멘토르 Ⅱ 석"
                         android:textColor="@color/purple"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:fontFamily="@font/notosanskr_medium_hestia"/>
                 </LinearLayout>
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
