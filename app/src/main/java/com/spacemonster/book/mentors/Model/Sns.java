@@ -1,18 +1,18 @@
 package com.spacemonster.book.mentors.Model;
 
 public class Sns {
-    String id;
+    String num;
     String snsAdd;
     String snsImg;
 
-    public Sns(String id, String snsAdd, String snsImg) {
-        this.id = id;
+    public Sns(String num, String snsAdd, String snsImg) {
+        this.num = num;
         this.snsAdd = snsAdd;
         this.snsImg = snsImg;
     }
 
-    public String getId() {
-        return id;
+    public String getNum() {
+        return num;
     }
 
     public String getSnsAdd() {

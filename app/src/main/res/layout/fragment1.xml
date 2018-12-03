@@ -104,21 +104,20 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="SNS"
+                            android:text="갤러리"
                             android:textStyle="bold"
                             android:textSize="15dp"
                             android:textColor="@color/black"
                             android:layout_gravity="center"
                             android:fontFamily="@font/notosanskr_medium_hestia"/>
                     </LinearLayout>
+
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/freg1_SnsView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        app:layout_constraintTop_toBottomOf="@+id/freg1_SnsLayout">
-                    </android.support.v7.widget.RecyclerView>
+                        android:layout_height="match_parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/freg1_SnsLayout" />
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>
         </ScrollView>

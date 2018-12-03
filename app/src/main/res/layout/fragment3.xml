@@ -45,14 +45,26 @@
         android:layout_height="40dp"
         android:backgroundTint="@color/gold" />
 </LinearLayout>
-    <ImageView
-        android:id="@+id/frag3_Img"
+    <!--<ImageView-->
+        <!--android:id="@+id/frag3_Img"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginTop="120dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/frag3_SpLayout" />-->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/frag3_Vp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="120dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frag3_SpLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/frag3_SpLayout"/>
 </android.support.constraint.ConstraintLayout>
 </layout>

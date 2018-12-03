@@ -1,17 +1,23 @@
 package com.spacemonster.book.mentors.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.spacemonster.book.mentors.Dialog.CustomDialog_galleryView;
+import com.spacemonster.book.mentors.Model.Sns;
 import com.spacemonster.book.mentors.R;
+import com.spacemonster.book.mentors.SnsViewActivity;
 
 import java.util.ArrayList;
 
@@ -20,21 +26,12 @@ public class SnsViewAdapter extends RecyclerView.Adapter<SnsViewAdapter.ViewHold
     String banner1 = "http://jbh9022.cafe24.com/img/banner03.jpg";
     String banner2 = "http://jbh9022.cafe24.com/img/banner02.jpg";
     ArrayList<Object> aa = new ArrayList<>();
-    public SnsViewAdapter(Context context) {
+    ArrayList<Sns> snsView;
+    String imgurl;
+    public SnsViewAdapter(Context context, ArrayList<Sns> snsView) {
         this.context = context;
-        aa.add(banner1);
-        aa.add(banner2);
-        aa.add(banner1);
-        aa.add(banner2);
-        aa.add(banner1);
-        aa.add(banner2);
-        aa.add(banner1);
-        aa.add(banner2);
-        aa.add(banner1);
-        aa.add(banner2);
-        aa.add(banner1);
-        aa.add(banner2);
-
+        this.snsView = snsView;
+        snsView = new ArrayList<>();
     }
 
     @NonNull
@@ -45,30 +42,35 @@ public class SnsViewAdapter extends RecyclerView.Adapter<SnsViewAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
+
+        final Sns snsview = snsView.get(position);
         RequestOptions options = new RequestOptions().fitCenter();
-        Glide.with(context).load(aa.get(position)).apply(options).into(holder.img1);
-        holder.img1.setScaleType(ImageView.ScaleType.FIT_XY);
-        final int a = position+1;
-        //이미지 클릭 -> SNS 연결
-        holder.img1.setOnClickListener(new View.OnClickListener() {
+        Glide.with(context).load(snsview.getSnsImg()).apply(options).into(holder.snsImg);
+
+        holder.sns_Layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "SNS!!!"+ a, Toast.LENGTH_SHORT).show();
+                imgurl = snsview.getSnsImg();
+                CustomDialog_galleryView galleryView = new CustomDialog_galleryView(context , imgurl);
+
+                galleryView.ViewDialog();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return aa.size();
+        return snsView.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView img1;
+        ImageView snsImg;
+        ConstraintLayout sns_Layout;
         public ViewHolder(View view) {
             super(view);
-            img1 = (ImageView)view.findViewById(R.id.sns_Img);
+            snsImg = (ImageView) view.findViewById(R.id.sns_Img);
+            sns_Layout = (ConstraintLayout)view.findViewById(R.id.sns_layout);
         }
     }
 }

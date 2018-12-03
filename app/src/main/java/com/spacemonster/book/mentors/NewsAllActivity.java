@@ -15,6 +15,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.spacemonster.book.mentors.Adapter.NewsAll_Adapter;
 import com.spacemonster.book.mentors.Model.Notice;
+import com.spacemonster.book.mentors.Network.Api;
 import com.spacemonster.book.mentors.databinding.ActivityNewsAllBinding;
 
 import java.io.IOException;
@@ -65,7 +66,7 @@ public class NewsAllActivity extends AppCompatActivity {
 
         @Override
         protected Notice[] doInBackground(String... strings) {
-            String url = Notice.URL2;
+            String url = Api.NEWS_ALL;
             RequestBody formBody = new FormBody.Builder().build();
 
             OkHttpClient client = new OkHttpClient();

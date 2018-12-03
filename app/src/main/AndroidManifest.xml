@@ -25,7 +25,8 @@
         <activity android:name=".NewsAllActivity" />
         <activity android:name=".NewsViewActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".UserInfoActivity"></activity>
+        <activity android:name=".UserInfoActivity" />
+        <activity android:name=".SnsViewActivity"></activity>
     </application>
 
 </manifest>

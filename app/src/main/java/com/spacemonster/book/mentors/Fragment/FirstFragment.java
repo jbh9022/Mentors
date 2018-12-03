@@ -24,6 +24,7 @@ import com.spacemonster.book.mentors.Adapter.NewsAdapter;
 import com.spacemonster.book.mentors.Adapter.SnsViewAdapter;
 import com.spacemonster.book.mentors.Model.Notice;
 import com.spacemonster.book.mentors.Model.Sns;
+import com.spacemonster.book.mentors.Network.Api;
 import com.spacemonster.book.mentors.NewsAllActivity;
 import com.spacemonster.book.mentors.R;
 import com.spacemonster.book.mentors.databinding.Fragment1Binding;
@@ -47,6 +48,7 @@ public class FirstFragment extends Fragment {
     private NewsAdapter newsAdapter;
     private SnsViewAdapter snsAdapter;
     ArrayList<Notice> newsView;
+    ArrayList<Sns> snsView;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -110,9 +112,10 @@ public class FirstFragment extends Fragment {
 
     //SNS 리사이클러뷰
     private void SNSView(){
+        snsView = new ArrayList<>();
         binding.freg1SnsView.setLayoutManager(new GridLayoutManager(getContext(), 3));
-        SnsGent snsGent = new SnsGent();
-        snsGent.execute();
+        SnsGet snsGet = new SnsGet();
+        snsGet.execute();
 
     }
     //타이머-배너 자동 전환
@@ -141,11 +144,11 @@ public class FirstFragment extends Fragment {
         GetJsonNews getJsonNews = new GetJsonNews();
         getJsonNews.execute();
     }
-
+    //소식 자료
     public class GetJsonNews extends AsyncTask<String, Void, Notice[]> {
         @Override
         protected Notice[] doInBackground(String... strings) {
-            String url = Notice.URL;
+            String url = Api.NEWS;
             RequestBody formBody = new FormBody.Builder().build();
 
             OkHttpClient client = new OkHttpClient();
@@ -184,11 +187,12 @@ public class FirstFragment extends Fragment {
             }
         }
     }
-    public class SnsGent extends AsyncTask<String, Void, Sns[]>{
+    //SNS값
+    public class SnsGet extends AsyncTask<String, Void, Sns[]>{
 
         @Override
         protected Sns[] doInBackground(String... strings) {
-            String url = "";
+            String url = Api.SNS;
             RequestBody body = new FormBody.Builder().build();
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
@@ -199,7 +203,7 @@ public class FirstFragment extends Fragment {
                 Response response = client.newCall(request).execute();
                 Gson gson = new Gson();
                 JsonParser parser = new JsonParser();
-                JsonElement rootObject = parser.parse(response.body().charStream()).getAsJsonObject().get("");
+                JsonElement rootObject = parser.parse(response.body().charStream()).getAsJsonObject().get("SnsViewALL");
 
                 Sns[] sns = gson.fromJson(rootObject, Sns[].class);
                 return sns;
@@ -216,11 +220,13 @@ public class FirstFragment extends Fragment {
             super.onPostExecute(sns);
             if(sns.length>0){
                 for(Sns sns1 : sns){
-                    snsAdapter = new SnsViewAdapter(getContext());
+                    snsView.add(sns1);
+                    snsAdapter = new SnsViewAdapter(getContext(),snsView);
                     binding.freg1SnsView.setAdapter(snsAdapter);
                     snsAdapter.notifyDataSetChanged();
                 }
             }
         }
     }
+
 }
