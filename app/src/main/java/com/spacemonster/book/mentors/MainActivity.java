@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     FourthFragment fragment4 = new FourthFragment();
     MenuItem prevMenuItem;
     public static MainActivity main;
+    String id;
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
             //status bar 색이 흰색일 경우 검은색으로 변경
 //            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+        Intent intent = getIntent();
+        id = intent.getStringExtra("ID");
+        username = intent.getStringExtra("username");
 
         main = MainActivity.this;
 
@@ -52,15 +57,32 @@ public class MainActivity extends AppCompatActivity {
         FragmentAdapter();
 
     }
+
     private void loginBtn(){
-        binding.mainUserImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent_login = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent_login);
+        if(id ==null || id.equals("")) {
+            binding.mainUserImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent_login = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent_login);
+                    finish();
 //                Toast.makeText(MainActivity.this, "로그인버튼", Toast.LENGTH_SHORT).show();
-            }
-        });
+                }
+            });
+        }
+        else{
+            binding.mainUserImg.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent userIntent = new Intent(MainActivity.this, UserInfoActivity.class);
+                    userIntent.putExtra("ID", id);
+                    userIntent.putExtra("username", username);
+                    startActivity(userIntent);
+                    finish();
+//                    Toast.makeText(MainActivity.this, "로그인됨!!!", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
     private void FragmentAdapter(){
         binding.mainVp.setCurrentItem(0);

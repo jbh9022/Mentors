@@ -49,11 +49,15 @@ public class FirstFragment extends Fragment {
     private SnsViewAdapter snsAdapter;
     ArrayList<Notice> newsView;
     ArrayList<Sns> snsView;
+    private ArrayList<Object> arrayList = new ArrayList<>();
+    private String banner1 = "http://jbh9022.cafe24.com/img/banner03.jpg";
+    private String banner2 = "http://jbh9022.cafe24.com/img/banner02.jpg";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment1, container, false);
-
+        arrayList.add(banner1);
+        arrayList.add(banner2);
         AddDisplay();
         //배너
         BannerAdd();
@@ -85,13 +89,14 @@ public class FirstFragment extends Fragment {
     }
 
     private void BannerAdd(){
-        BannerAdapter bannerAdapter = new BannerAdapter(getContext());
+        BannerAdapter bannerAdapter = new BannerAdapter(getContext(), arrayList);
         binding.freg1Banner.setAdapter(bannerAdapter);
 
     }
     private void IndicatorChange() {
         //카운터 점 숫자
-        binding.mainIndincatorView.setCount(2);
+        int count = arrayList.size();
+        binding.mainIndincatorView.setCount(count);
         binding.freg1Banner.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

@@ -20,13 +20,11 @@ public class BannerAdapter extends PagerAdapter {
     private Context context;
     private LayoutInflater layoutInflater;
     private int pos;
-    private String banner1 = "http://jbh9022.cafe24.com/img/banner03.jpg";
-    private String banner2 = "http://jbh9022.cafe24.com/img/banner02.jpg";
-    private ArrayList<Object> arrayList = new ArrayList<>();
-    public BannerAdapter(Context context) {
+    private ArrayList<Object> arrayList;
+
+    public BannerAdapter(Context context, ArrayList<Object> arrayList) {
         this.context = context;
-        arrayList.add(banner1);
-        arrayList.add(banner2);
+        this.arrayList = arrayList;
     }
 
     @Override

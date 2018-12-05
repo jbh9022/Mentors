@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,44 +52,32 @@ public class ThirdFragment extends Fragment {
     private void Spinnerchoice(){
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, frag3item);
         binding.frag3Spinner.setAdapter(adapter);
-//        binding.frag3Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                switch (i){
-//                    case 0:
-//                        binding.frag3Img.setImageResource(R.drawable.info01);
-//                        break;
-//                    case 1:
-//                        binding.frag3Img.setImageResource(R.drawable.info02);
-//                        break;
-//                    case 2:
-//                        binding.frag3Img.setImageResource(R.drawable.info03);
-//                        break;
-//                    case 3:
-//                        binding.frag3Img.setImageResource(R.drawable.info04);
-//                        break;
-//                    case 4:
-//                        binding.frag3Img.setImageResource(R.drawable.info05);
-//                        break;
-//                    case 5:
-//                        binding.frag3Img.setImageResource(R.drawable.info06);
-//                        break;
-//                    case 6:
-//                        binding.frag3Img.setImageResource(R.drawable.info07);
-//                        break;
-//                    case 7:
-//                        binding.frag3Img.setImageResource(R.drawable.info08);
-//                        break;
-//                    case 8:
-//                        binding.frag3Img.setImageResource(R.drawable.info09);
-//                        break;
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
+        binding.frag3Vp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                binding.frag3Spinner.setSelection(binding.frag3Vp.getCurrentItem());
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        binding.frag3Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                binding.frag3Vp.setCurrentItem(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 }

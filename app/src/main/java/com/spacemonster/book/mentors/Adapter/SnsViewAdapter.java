@@ -23,15 +23,11 @@ import java.util.ArrayList;
 
 public class SnsViewAdapter extends RecyclerView.Adapter<SnsViewAdapter.ViewHolder> {
     Context context;
-    String banner1 = "http://jbh9022.cafe24.com/img/banner03.jpg";
-    String banner2 = "http://jbh9022.cafe24.com/img/banner02.jpg";
-    ArrayList<Object> aa = new ArrayList<>();
     ArrayList<Sns> snsView;
     String imgurl;
     public SnsViewAdapter(Context context, ArrayList<Sns> snsView) {
         this.context = context;
         this.snsView = snsView;
-        snsView = new ArrayList<>();
     }
 
     @NonNull

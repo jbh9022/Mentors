@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 public class Frag3_VpAdapter extends PagerAdapter {
     private Context context;
-    private int[] frag3img;
     private ArrayList<Integer> frag3_Img;
     private LayoutInflater layoutInflater;
 
@@ -41,10 +40,10 @@ public class Frag3_VpAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = layoutInflater.inflate(R.layout.frag3_img, null);
-        ImageView banner = (ImageView) view.findViewById(R.id.frag3_VpImgview);
+        ImageView img = (ImageView) view.findViewById(R.id.frag3_VpImgview);
         RequestOptions options = new RequestOptions().fitCenter();
-        Glide.with(context).load(frag3_Img.get(position)).apply(options).into(banner);
-        banner.setScaleType(ImageView.ScaleType.FIT_XY);
+        Glide.with(context).load(frag3_Img.get(position)).apply(options).into(img);
+        img.setScaleType(ImageView.ScaleType.FIT_XY);
 
         ViewPager vp = (ViewPager) container;
         vp.addView(view,0);

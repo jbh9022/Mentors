@@ -3,7 +3,9 @@ package com.spacemonster.book.mentors;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.os.AsyncTask;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +13,8 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 public class SplashActivity extends AppCompatActivity {
-
+    String id;
+    String pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,11 +33,34 @@ public class SplashActivity extends AppCompatActivity {
     }
     private class splashhandler implements Runnable{
         public void run(){
-            startActivity(new Intent(getApplication(), MainActivity.class)); //로딩이 끝난 후, ChoiceFunction 이동
-            SplashActivity.this.finish(); // 로딩페이지 Activity stack에서 제거
-        }
-    }
+            SharedPreferences pref = getSharedPreferences("loginSave", MODE_PRIVATE);
+            String id =  pref.getString("id_save","");
+            String pass =  pref.getString("pass_save", "");
+            if(!id.equals("")) {
+                if(!pass.equals("")){
+                    Intent intent = new Intent(SplashActivity.this, UserInfoActivity.class);
+                    intent.putExtra("ID", id);
+                    intent.putExtra("username", pass);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    startActivity(new Intent(getApplication(), MainActivity.class)); //로딩이 끝난 후, ChoiceFunction 이동
+                    SplashActivity.this.finish(); // 로딩페이지 Activity stack에서 제거
 
+                }
+            }
+            else {
+                startActivity(new Intent(getApplication(), MainActivity.class)); //로딩이 끝난 후, ChoiceFunction 이동
+                SplashActivity.this.finish(); // 로딩페이지 Activity stack에서 제거
+            }
+
+        }
+        private void LoginSplash(){
+
+        }
+
+    }
     @Override
     public void onBackPressed() {
         //초반 플래시 화면에서 넘어갈때 뒤로가기 버튼 못누르게 함
@@ -72,4 +98,5 @@ public class SplashActivity extends AppCompatActivity {
      alert.show();
 
     }
+
 }
