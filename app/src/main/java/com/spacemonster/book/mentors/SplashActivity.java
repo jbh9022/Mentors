@@ -10,16 +10,36 @@ import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+import com.spacemonster.book.mentors.Model.User;
+import com.spacemonster.book.mentors.Network.Api;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class SplashActivity extends AppCompatActivity {
-    String id;
-    String pass;
+    ArrayList<User> userSp_List;
+    TextView sp_text1;
+    TextView sp_text2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        sp_text1 = (TextView)findViewById(R.id.splash_txt1);
+        sp_text2 = (TextView)findViewById(R.id.splash_txt2);
 
         //네트워크 연결안되었을경우
         if(NetworkConnection() == false){
@@ -32,34 +52,90 @@ public class SplashActivity extends AppCompatActivity {
 
     }
     private class splashhandler implements Runnable{
+        private String id;
+        private String pass;
         public void run(){
             SharedPreferences pref = getSharedPreferences("loginSave", MODE_PRIVATE);
-            String id =  pref.getString("id_save","");
-            String pass =  pref.getString("pass_save", "");
-            if(!id.equals("")) {
-                if(!pass.equals("")){
-                    Intent intent = new Intent(SplashActivity.this, UserInfoActivity.class);
-                    intent.putExtra("ID", id);
-                    intent.putExtra("username", pass);
-                    startActivity(intent);
-                    finish();
-                }
-                else {
-                    startActivity(new Intent(getApplication(), MainActivity.class)); //로딩이 끝난 후, ChoiceFunction 이동
-                    SplashActivity.this.finish(); // 로딩페이지 Activity stack에서 제거
-
-                }
+            id =  pref.getString("id_save","");
+            pass =  pref.getString("pass_save", "");
+            boolean chk = pref.getBoolean("chk_Save",false);
+            if (chk == true) {
+                LoginSplash();
             }
             else {
                 startActivity(new Intent(getApplication(), MainActivity.class)); //로딩이 끝난 후, ChoiceFunction 이동
                 SplashActivity.this.finish(); // 로딩페이지 Activity stack에서 제거
             }
-
         }
         private void LoginSplash(){
-
+            userSp_List = new ArrayList<>();
+            Splashlogin splashlogin = new Splashlogin();
+            splashlogin.execute(id, pass);
         }
 
+    }
+
+    public class Splashlogin extends AsyncTask<String, Void, User[]>{
+
+        @Override
+        protected User[] doInBackground(String... strings) {
+
+            String id = strings[0];
+            String pass = strings[1];
+            String url = Api.CHECK_USER;
+            RequestBody body = new FormBody.Builder()
+                    .add("ID", id)
+                    .add("PASSWORD", pass)
+                    .build();
+            OkHttpClient client = new OkHttpClient();
+            Request request =new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+            try{
+                Response response = client.newCall(request).execute();
+
+                Gson gson = new Gson();
+                JsonParser parser = new JsonParser();
+                JsonElement rootObject = parser.parse(response.body().charStream()).getAsJsonObject().get("checkUser");
+
+                User[] users = gson.fromJson(rootObject, User[].class);
+                return  users;
+            }catch (IOException e){
+                Log.d("GetUser", e.getMessage());
+                return null;
+            }
+        }
+
+        @Override
+        protected void onPostExecute(User[] users) {
+            super.onPostExecute(users);
+            if(users.length > 0){
+                for(User user : users){
+                    userSp_List.add(user);
+                }
+                sp_text1.setText(userSp_List.get(0).getUserName());
+                sp_text2.setText(userSp_List.get(0).getUserCheck());
+                userSp_List.clear();
+            }
+            else {
+                sp_text1.setText("");
+                sp_text2.setText("");
+            }
+            String hidden_id = sp_text1.getText().toString();
+            String hidden_User = sp_text2.getText().toString();
+            if(hidden_User.equals("일치") || hidden_User == "일치"){
+                Intent intent = new Intent(SplashActivity.this, UserInfoActivity.class);
+                intent.putExtra("ID", hidden_id);
+                intent.putExtra("username", hidden_User);
+                startActivity(intent);
+                finish();
+            }
+            else {
+                startActivity(new Intent(getApplication(), MainActivity.class)); //로딩이 끝난 후, ChoiceFunction 이동
+                SplashActivity.this.finish(); // 로딩페이지 Activity stack에서 제거
+            }
+        }
     }
     @Override
     public void onBackPressed() {

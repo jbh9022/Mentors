@@ -85,7 +85,7 @@ public class FirstFragment extends Fragment {
 
     private void AddDisplay(){
         timer = new Timer();
-        timer.scheduleAtFixedRate(new ImgTimer(), 10000, 10000);
+        timer.scheduleAtFixedRate(new ImgTimer(), 5000, 5000);
     }
 
     private void BannerAdd(){

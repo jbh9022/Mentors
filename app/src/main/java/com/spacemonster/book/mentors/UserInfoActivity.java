@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.spacemonster.book.mentors.ChangeSeat.Change_Busan_Geoje_Activity;
 import com.spacemonster.book.mentors.databinding.ActivityUserInfoBinding;
 
 import static android.view.View.INVISIBLE;
@@ -44,6 +45,7 @@ public class UserInfoActivity extends AppCompatActivity {
 
             }
         });
+//        binding.userName2.setText(username);
         //홈버튼
         Backbtn();
         Logout();
@@ -92,7 +94,9 @@ public class UserInfoActivity extends AppCompatActivity {
         binding.userSeatChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(UserInfoActivity.this,"좌석변경", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(UserInfoActivity.this, Change_Busan_Geoje_Activity.class);
+                startActivity(intent);
+//                Toast.makeText(UserInfoActivity.this,"좌석변경", Toast.LENGTH_SHORT).show();
             }
         });
     }

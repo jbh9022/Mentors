@@ -25,8 +25,7 @@ public class Busan_Geoje extends PagerAdapter {
     Context context;
     private LayoutInflater layoutInflater;
     private BusanGeojeMapBinding binding;
-    int color1 = R.color.gray;
-    int[] layoutList = {R.id.b_gSeat1, R.id.b_gSeat2, R.id.b_gSeat3, R.id.b_gSeat4, R.id.b_gSeat5, R.id.b_gSeat6, R.id.b_gSeat7, R.id.b_gSeat8, R.id.b_gSeat9, R.id.b_gSeat10,
+    private int[] layoutList = {R.id.b_gSeat1, R.id.b_gSeat2, R.id.b_gSeat3, R.id.b_gSeat4, R.id.b_gSeat5, R.id.b_gSeat6, R.id.b_gSeat7, R.id.b_gSeat8, R.id.b_gSeat9, R.id.b_gSeat10,
                     R.id.b_gSeat11, R.id.b_gSeat12, R.id.b_gSeat13, R.id.b_gSeat14, R.id.b_gSeat15, R.id.b_gSeat16, R.id.b_gSeat17, R.id.b_gSeat18, R.id.b_gSeat19, R.id.b_gSeat20,
                     R.id.b_gSeat21, R.id.b_gSeat22, R.id.b_gSeat23, R.id.b_gSeat24, R.id.b_gSeat25, R.id.b_gSeat26, R.id.b_gSeat27, R.id.b_gSeat28, R.id.b_gSeat29, R.id.b_gSeat30,
                     R.id.b_gSeat31, R.id.b_gSeat32, R.id.b_gSeat33, R.id.b_gSeat34, R.id.b_gSeat35, R.id.b_gSeat36, R.id.b_gSeat37, R.id.b_gSeat38, R.id.b_gSeat39, R.id.b_gSeat40,
@@ -34,7 +33,7 @@ public class Busan_Geoje extends PagerAdapter {
                     R.id.b_gSeat51, R.id.b_gSeat52, R.id.b_gSeat53, R.id.b_gSeat54, R.id.b_gSeat55, R.id.b_gSeat56, R.id.b_gSeat57, R.id.b_gSeat58, R.id.b_gSeat59, R.id.b_gSeat60,
                     R.id.b_gSeat61, R.id.b_gSeat62, R.id.b_gSeat63, R.id.b_gSeat64, R.id.b_gSeat65, R.id.b_gSeat66, R.id.b_gSeat67, R.id.b_gSeat68, R.id.b_gSeat69, R.id.b_gSeat70,
                     R.id.b_gSeat71, R.id.b_gSeat72, R.id.b_gSeat73, R.id.b_gSeat74, R.id.b_gSeat75, R.id.b_gSeat76, R.id.b_gSeat77, R.id.b_gSeat78, R.id.b_gSeat79};
-    int[] textList = {R.id.b_gSeatT1, R.id.b_gSeatT2, R.id.b_gSeatT3, R.id.b_gSeatT4, R.id.b_gSeatT5, R.id.b_gSeatT6, R.id.b_gSeatT7, R.id.b_gSeatT8, R.id.b_gSeatT9, R.id.b_gSeatT10,
+    private int[] textList = {R.id.b_gSeatT1, R.id.b_gSeatT2, R.id.b_gSeatT3, R.id.b_gSeatT4, R.id.b_gSeatT5, R.id.b_gSeatT6, R.id.b_gSeatT7, R.id.b_gSeatT8, R.id.b_gSeatT9, R.id.b_gSeatT10,
             R.id.b_gSeatT11, R.id.b_gSeatT12, R.id.b_gSeatT13, R.id.b_gSeatT14, R.id.b_gSeatT15, R.id.b_gSeatT16, R.id.b_gSeatT17, R.id.b_gSeatT18, R.id.b_gSeatT19, R.id.b_gSeatT20,
             R.id.b_gSeatT21, R.id.b_gSeatT22, R.id.b_gSeatT23, R.id.b_gSeatT24, R.id.b_gSeatT25, R.id.b_gSeatT26, R.id.b_gSeatT27, R.id.b_gSeatT28, R.id.b_gSeatT29, R.id.b_gSeatT30,
             R.id.b_gSeatT31, R.id.b_gSeatT32, R.id.b_gSeatT33, R.id.b_gSeatT34, R.id.b_gSeatT35, R.id.b_gSeatT36, R.id.b_gSeatT37, R.id.b_gSeatT38, R.id.b_gSeatT39, R.id.b_gSeatT40,
