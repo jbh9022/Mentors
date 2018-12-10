@@ -3,15 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="220dp"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@color/mainColor"
+        android:background="@color/white"
         android:orientation="vertical"
         android:gravity="center">
         <TextView
@@ -19,52 +19,46 @@
             android:layout_height="wrap_content"
             android:text="종료하시겠습니까?"
             android:textSize="16dp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/black"
+            android:fontFamily="@font/notosanskr_medium_hestia"/>
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="@color/black" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:orientation="horizontal">
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white">
         <LinearLayout
             android:id="@+id/finish_ok"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@color/gold"
-            android:gravity="center">
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:background="@drawable/finishicon"
+            android:gravity="center"
+            android:layout_margin="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="종료"
                 android:textSize="16dp"
+                android:fontFamily="@font/notosanskr_medium_hestia"
                 android:textColor="@color/black"/>
         </LinearLayout>
-        <View
-            android:layout_width="1dp"
-            android:layout_height="60dp"
-            android:background="@color/black"/>
         <LinearLayout
             android:id="@+id/finish_cancel"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_weight="1"
-            android:background="@color/gold"
-            android:gravity="center">
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:background="@drawable/finishicon"
+            android:gravity="center"
+            android:layout_margin="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="취소"
                 android:textSize="16dp"
+                android:fontFamily="@font/notosanskr_medium_hestia"
                 android:textColor="@color/black"/>
         </LinearLayout>
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/black"/>
 </LinearLayout>

@@ -24,7 +24,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/login_backBtn"
+            android:id="@+id/change_Geoje_backBtn"
             android:layout_width="35dp"
             android:layout_height="35dp"
             android:layout_marginStart="8dp"
@@ -37,19 +37,39 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                app:srcCompat="@drawable/ic_home_gray_24dp" />
+                app:srcCompat="@drawable/ic_arrow_back_gray_24dp" />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
-    <android.support.v4.widget.SwipeRefreshLayout
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:layout_gravity="center">
-<include
-    layout="@layout/busan_geoje_map"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+        android:layout_weight="4">
+        <include
+            layout="@layout/busan_geoje_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/change_Refresh"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/refresh"/>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"

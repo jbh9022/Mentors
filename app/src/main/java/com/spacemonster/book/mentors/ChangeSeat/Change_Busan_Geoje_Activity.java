@@ -4,9 +4,13 @@ import android.databinding.DataBindingUtil;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +38,10 @@ public class Change_Busan_Geoje_Activity extends AppCompatActivity {
             R.id.b_gSeatT71, R.id.b_gSeatT72, R.id.b_gSeatT73, R.id.b_gSeatT74, R.id.b_gSeatT75, R.id.b_gSeatT76, R.id.b_gSeatT77, R.id.b_gSeatT78, R.id.b_gSeatT79};
     LinearLayout[] layouts = new LinearLayout[79];
     TextView[] textViews = new TextView[79];
+    private static ScrollView vScroll;
+    private static HorizontalScrollView hScroll;
+    private static int currentX = 0;
+    private static int currentY = 0;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +52,17 @@ public class Change_Busan_Geoje_Activity extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.white));
             //status bar 색이 흰색일 경우 검은색으로 변경
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+
+            //대각선 스크롤
+            SoftScroll();
             //좌석 연결
             init();
             //변경가능 좌석 색 표시
             SeatColor();
             //좌석 선택
             SeatChoice();
+            //뒤로가기
+            Backbtn();
             //좌석 변경
             binding.changeGeojeSeatChangeBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -66,6 +79,66 @@ public class Change_Busan_Geoje_Activity extends AppCompatActivity {
             });
         }
     }
+
+    private void Backbtn() {
+        binding.changeGeojeBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    //대각선 스크롤
+    private void SoftScroll() {
+        vScroll = (ScrollView) findViewById(R.id.geoje_Vscroll);
+        hScroll = (HorizontalScrollView)findViewById(R.id.geoje_Hscroll);
+        vScroll.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                Touch(view, motionEvent);
+                return false;
+            }
+        });
+        hScroll.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                Touch(view, motionEvent);
+                return false;
+            }
+        });
+    }
+    public static void scrollBy(int x, int y)
+    {
+        hScroll.scrollBy(x, 0);
+        vScroll.scrollBy(0, y);
+    }
+
+    public void Touch(View v, MotionEvent event) {
+        switch (event.getAction())
+        {
+            case MotionEvent.ACTION_DOWN:
+                currentX = (int)event.getRawX();
+                currentY = (int)event.getRawY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int x2 = (int)event.getRawX();
+                int y2 = (int)event.getRawY();
+                scrollBy(currentX-x2, currentY-y2);
+                currentX = x2;
+                currentY = y2;
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+            default:
+                currentX = (int)event.getRawX();
+                currentY = (int)event.getRawY();
+                break;
+        }
+        currentX = (int)event.getRawX();
+        currentY = (int)event.getRawY();
+    }
+
     private void init(){
         for(int i =0; i<79; i++){
             layouts[i] = (LinearLayout) findViewById(layoutList[i]);
@@ -86,7 +159,7 @@ public class Change_Busan_Geoje_Activity extends AppCompatActivity {
             textViews[i].setTextColor(getResources().getColor(R.color.red));
         }
     }
-
+//좌석 선택시 선택 좌석 밑에 표시
     private void SeatChoice(){
         for(int i =0; i<29; i++){
             final int a = i+1;
@@ -125,4 +198,6 @@ public class Change_Busan_Geoje_Activity extends AppCompatActivity {
             });
         }
     }
+
+
 }

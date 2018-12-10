@@ -55,10 +55,12 @@ public class SplashActivity extends AppCompatActivity {
         private String id;
         private String pass;
         public void run(){
+            //저장된 아이디 비밀번호 체크 불러오기
             SharedPreferences pref = getSharedPreferences("loginSave", MODE_PRIVATE);
             id =  pref.getString("id_save","");
             pass =  pref.getString("pass_save", "");
             boolean chk = pref.getBoolean("chk_Save",false);
+            //체크가 있을경우
             if (chk == true) {
                 LoginSplash();
             }
@@ -67,6 +69,7 @@ public class SplashActivity extends AppCompatActivity {
                 SplashActivity.this.finish(); // 로딩페이지 Activity stack에서 제거
             }
         }
+
         private void LoginSplash(){
             userSp_List = new ArrayList<>();
             Splashlogin splashlogin = new Splashlogin();

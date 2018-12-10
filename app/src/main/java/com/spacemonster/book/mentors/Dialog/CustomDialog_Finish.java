@@ -11,10 +11,15 @@ import com.spacemonster.book.mentors.R;
 
 public class CustomDialog_Finish {
     private Context context;
+    private int phoneWidth;
+    private int phoneHeigth;
 
-    public CustomDialog_Finish(Context context) {
+    public CustomDialog_Finish(Context context, int phoneWidth, int phoneHeigth) {
         this.context = context;
+        this.phoneWidth = phoneWidth;
+        this.phoneHeigth = phoneHeigth;
     }
+
     public void CallDialog(){
         final Dialog dlg = new Dialog(context);
         dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);

@@ -34,13 +34,14 @@
             android:layout_marginLeft="8dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/ic_home_gray_24dp" />
+                android:layout_width="20dp"
+                android:layout_height="17dp"
+                android:background="@drawable/home2" />
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 
@@ -131,8 +132,7 @@
                         android:id="@+id/user_NameLoyout3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="5dp"
                         app:layout_constraintStart_toEndOf="@+id/user_NameLoyout2"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -237,17 +237,17 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:gravity="center"
                             android:fontFamily="@font/notosanskr_medium_hestia"
                             android:text="좌석 변경하기"
                             android:textColor="@color/white" />
 
                         <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:layout_gravity="bottom"
-                            app:srcCompat="@drawable/ic_keyboard_arrow_right_white_24dp" />
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/arrow_r" />
                     </LinearLayout>
                 </android.support.constraint.ConstraintLayout>
             </android.support.constraint.ConstraintLayout>
@@ -319,64 +319,64 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:id="@+id/user_Btn1"
+                        android:id="@+id/user_Checkout"
                         android:layout_width="80dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="10dp"
-                        android:background="@drawable/user_info_btn"
+                        android:background="@drawable/user_info_select"
                         android:gravity="center"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
                         <TextView
-                            android:id="@+id/user_BtnTxt1"
+                            android:id="@+id/user_CheckoutTxt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/notosanskr_medium_hestia"
                             android:gravity="center"
                             android:text="퇴실"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/user_info_select_txt" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/user_Btn2"
+                        android:id="@+id/user_Outting"
                         android:layout_width="80dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/user_Btn1"
+                        app:layout_constraintStart_toEndOf="@+id/user_Checkout"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:background="@drawable/user_info_btn">
+                        android:background="@drawable/user_info_select">
 
                         <TextView
-                            android:id="@+id/user_BtnTxt2"
+                            android:id="@+id/user_OuttingTxt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/notosanskr_medium_hestia"
                             android:gravity="center"
                             android:text="외출"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/user_info_select_txt" />
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/user_Btn3"
+                        android:id="@+id/user_Comback"
                         android:layout_width="80dp"
                         android:layout_height="30dp"
                         android:layout_marginLeft="10dp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/user_Btn2"
+                        app:layout_constraintStart_toEndOf="@+id/user_Outting"
                         app:layout_constraintTop_toTopOf="parent"
-                        android:background="@drawable/user_info_btn">
+                        android:background="@drawable/user_info_select">
 
                         <TextView
-                            android:id="@+id/user_BtnTxt3"
+                            android:id="@+id/user_CombackTxt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/notosanskr_medium_hestia"
                             android:gravity="center"
                             android:text="복귀"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/user_info_select_txt" />
                     </LinearLayout>
                 </android.support.constraint.ConstraintLayout>
             </LinearLayout>

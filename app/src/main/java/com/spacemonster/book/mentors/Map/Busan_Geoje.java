@@ -10,11 +10,13 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.spacemonster.book.mentors.Dialog.CustomDialog_GeojeSeatIMG;
 import com.spacemonster.book.mentors.R;
 import com.spacemonster.book.mentors.databinding.BusanGeojeMapBinding;
 
@@ -43,7 +45,8 @@ public class Busan_Geoje extends PagerAdapter {
             R.id.b_gSeatT71, R.id.b_gSeatT72, R.id.b_gSeatT73, R.id.b_gSeatT74, R.id.b_gSeatT75, R.id.b_gSeatT76, R.id.b_gSeatT77, R.id.b_gSeatT78, R.id.b_gSeatT79};
     LinearLayout[] layouts = new LinearLayout[79];
     TextView[] textViews = new TextView[79];
-
+    protected static int currentX = 0;
+    protected static int currentY = 0;
     public Busan_Geoje(Context context) {
         this.context = context;
 
@@ -72,6 +75,8 @@ public class Busan_Geoje extends PagerAdapter {
             layouts[i] = (LinearLayout) view.findViewById(layoutList[i]);
             textViews[i] = (TextView) view.findViewById(textList[i]);
         }
+        //대각선 스크롤
+        SoftScroll();
         //프로코프석
         layout1Click();
         //시그너스 1 석
@@ -82,6 +87,7 @@ public class Busan_Geoje extends PagerAdapter {
         layout4Click();
         //멘토르 2 석
         layout5Click();
+
         ViewPager vp = (ViewPager) container;
         vp.addView(view);
 
@@ -101,6 +107,9 @@ public class Busan_Geoje extends PagerAdapter {
         binding.busanGeogeLayout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                CustomDialog_GeojeSeatIMG dialogGeojeSeatIMG = new CustomDialog_GeojeSeatIMG(context, R.color.red);
+                dialogGeojeSeatIMG.CallDialog();
+
                 for(int i =0; i<47; i++){
                     layouts[i].setBackgroundResource(R.color.gray);
                     textViews[i].setTextColor(Color.BLACK);
@@ -116,6 +125,8 @@ public class Busan_Geoje extends PagerAdapter {
         binding.busanGeogeLayout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                CustomDialog_GeojeSeatIMG dialogGeojeSeatIMG = new CustomDialog_GeojeSeatIMG(context, R.color.blue);
+                dialogGeojeSeatIMG.CallDialog();
                 for(int i =0; i<29; i++){
                     layouts[i].setBackgroundResource(R.color.gray);
                     textViews[i].setTextColor(Color.BLACK);
@@ -136,6 +147,8 @@ public class Busan_Geoje extends PagerAdapter {
         binding.busanGeogeLayout3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                CustomDialog_GeojeSeatIMG dialogGeojeSeatIMG = new CustomDialog_GeojeSeatIMG(context, R.color.green);
+                dialogGeojeSeatIMG.CallDialog();
                 for(int i =0; i<5; i++){
                     layouts[i].setBackgroundResource(R.drawable.bgeoje_layout3);
                     textViews[i].setTextColor(view.getResources().getColor(R.color.green));
@@ -168,6 +181,8 @@ public class Busan_Geoje extends PagerAdapter {
         binding.busanGeogeLayout4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                CustomDialog_GeojeSeatIMG dialogGeojeSeatIMG = new CustomDialog_GeojeSeatIMG(context, R.color.yellow);
+                dialogGeojeSeatIMG.CallDialog();
                 for(int i =0; i<5; i++){
                     layouts[i].setBackgroundResource(R.color.gray);
                     textViews[i].setTextColor(Color.BLACK);
@@ -196,6 +211,8 @@ public class Busan_Geoje extends PagerAdapter {
         binding.busanGeogeLayout5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                CustomDialog_GeojeSeatIMG dialogGeojeSeatIMG = new CustomDialog_GeojeSeatIMG(context, R.color.purple);
+                dialogGeojeSeatIMG.CallDialog();
                 for(int i =0; i<9; i++){
                     layouts[i].setBackgroundResource(R.color.gray);
                     textViews[i].setTextColor(Color.BLACK);
@@ -218,6 +235,48 @@ public class Busan_Geoje extends PagerAdapter {
         });
 
     }
+    private void SoftScroll(){
+        binding.geojeVscroll.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                Toutch(view, motionEvent);
+                return false;
+            }
+        });
+        binding.geojeHscroll.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                Toutch(view, motionEvent);
+                return false;
+            }
+        });
+    }
+    private void Toutch(View v, MotionEvent event){
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                currentX = (int)event.getRawX();
+                currentY = (int)event.getRawY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                int x2 = (int)event.getRawX();
+                int y2 = (int)event.getRawY();
+                scrollBy(currentX-x2, currentY-y2);
+                currentX = x2;
+                currentY = y2;
+                break;
+            case MotionEvent.ACTION_UP:
+                break;
+            default:
+                currentX = (int)event.getRawX();
+                currentY = (int)event.getRawY();
+                break;
+        }
+        currentX = (int)event.getRawX();
+        currentY = (int)event.getRawY();
+    }
 
-
+    private void scrollBy(int x, int y){
+        binding.geojeHscroll.scrollBy(x, 0);
+        binding.geojeVscroll.scrollBy(0, y);
+    }
 }

@@ -48,8 +48,46 @@ public class UserInfoActivity extends AppCompatActivity {
 //        binding.userName2.setText(username);
         //홈버튼
         Backbtn();
+        //로그아웃
         Logout();
+        //좌석 변경
         SeatChange();
+        //외출
+        Outting();
+        //복귀
+        Comback();
+        //퇴실
+        Checkout();
+    }
+    //외출
+    private void Outting() {
+        binding.userOutting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.userNow.setText("외출");
+
+            }
+        });
+    }
+    //복귀
+    private void Comback() {
+        binding.userComback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.userNow.setText("입실");
+
+            }
+        });
+    }
+    //퇴실
+    private void Checkout(){
+        binding.userCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.userNow.setText("퇴실");
+
+            }
+        });
     }
 
     private void Backbtn(){

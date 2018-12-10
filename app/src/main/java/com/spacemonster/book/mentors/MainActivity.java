@@ -3,6 +3,7 @@ package com.spacemonster.book.mentors;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,11 +13,13 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Display;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.Toast;
 
+import com.spacemonster.book.mentors.Dialog.CustomDialog_Finish;
 import com.spacemonster.book.mentors.Fragment.FirstFragment;
 import com.spacemonster.book.mentors.Fragment.FourthFragment;
 import com.spacemonster.book.mentors.Fragment.SecondFragment;
@@ -34,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     public static MainActivity main;
     String id;
     String username;
+    int phonWidth;
+    int phonHeight;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
             //status bar 색이 흰색일 경우 검은색으로 변경
 //            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        phonWidth = size.x;
+        phonHeight = size.y;
+
         Intent intent = getIntent();
         id = intent.getStringExtra("ID");
         username = intent.getStringExtra("username");
@@ -160,29 +171,29 @@ public class MainActivity extends AppCompatActivity {
     //뒤로가기 버튼
     @Override
     public void onBackPressed() {
-//        CustomDialog_Finish finish = new CustomDialog_Finish(MainActivity.this);
-//        finish.CallDialog();
+        CustomDialog_Finish finish = new CustomDialog_Finish(MainActivity.this, phonWidth, phonHeight);
+        finish.CallDialog();
 
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("");
-        builder.setMessage("종료하시겠습니까?")
-                .setCancelable(false)
-                .setPositiveButton("취소", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.cancel();
-                        dialogInterface.dismiss();
-                    }
-                })
-                .setNegativeButton("종료", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        finish();
-                        dialogInterface.dismiss();
-                    }
-                });
-        AlertDialog dialog = builder.create();
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.show();
+//        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("");
+//        builder.setMessage("종료하시겠습니까?")
+//                .setCancelable(false)
+//                .setPositiveButton("취소", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dialogInterface.cancel();
+//                        dialogInterface.dismiss();
+//                    }
+//                })
+//                .setNegativeButton("종료", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        finish();
+//                        dialogInterface.dismiss();
+//                    }
+//                });
+//        AlertDialog dialog = builder.create();
+//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        dialog.show();
     }
 }

@@ -16,11 +16,15 @@
     android:gravity="center"
     android:background="@color/white">
     <ScrollView
+        android:id="@+id/geoje_Vscroll"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
         <HorizontalScrollView
+            android:id="@+id/geoje_Hscroll"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -1832,7 +1836,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="4"
+            android:layout_weight="5"
             android:background="@color/white">
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
