@@ -70,7 +70,7 @@ public class Busan_Geoje extends PagerAdapter {
         //바인딩
         binding = DataBindingUtil.inflate(LayoutInflater.from(context), R.layout.busan_geoje_map, container, false);
         View view = binding.getRoot();
-
+        binding.busanGeogeSeatName.setVisibility(View.VISIBLE);
         for(int i =0; i<79; i++){
             layouts[i] = (LinearLayout) view.findViewById(layoutList[i]);
             textViews[i] = (TextView) view.findViewById(textList[i]);

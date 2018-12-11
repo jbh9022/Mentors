@@ -59,6 +59,8 @@ public class UserInfoActivity extends AppCompatActivity {
         //퇴실
         Checkout();
     }
+
+
     //외출
     private void Outting() {
         binding.userOutting.setOnClickListener(new View.OnClickListener() {

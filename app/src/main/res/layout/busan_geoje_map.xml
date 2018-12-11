@@ -1834,6 +1834,7 @@
     </ScrollView>
 </LinearLayout>
         <LinearLayout
+            android:id="@+id/busanGeoge_SeatName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="5"
@@ -1842,7 +1843,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
                 <LinearLayout
                     android:id="@+id/busanGeoge_Layout1"
                     android:layout_width="90dp"
@@ -1860,7 +1860,7 @@
                         android:id="@+id/busanGeoge_text1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="프로코프석"
+                        android:text="프로코프"
                         android:textColor="@color/red"
                         android:textSize="15dp"
                         android:textStyle="bold"
@@ -1884,7 +1884,7 @@
                         android:id="@+id/busanGeoge_text2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="시그너스Ⅰ석"
+                        android:text="시그너스Ⅰ"
                         android:textColor="@color/blue"
                         android:textStyle="bold"
                         android:fontFamily="@font/notosanskr_medium_hestia"/>
@@ -1908,7 +1908,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/notosanskr_medium_hestia"
-                        android:text="시그너스Ⅱ석"
+                        android:text="시그너스Ⅱ"
                         android:textColor="@color/green"
                         android:textStyle="bold" />
                 </LinearLayout>
@@ -1928,7 +1928,7 @@
                         android:id="@+id/busanGeoge_text4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="멘토르 Ⅰ 석"
+                        android:text="멘토르Ⅰ"
                         android:textColor="@color/yellow"
                         android:textStyle="bold"
                         android:fontFamily="@font/notosanskr_medium_hestia"/>
@@ -1949,7 +1949,7 @@
                         android:id="@+id/busanGeoge_text5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="멘토르 Ⅱ 석"
+                        android:text="멘토르Ⅱ"
                         android:textColor="@color/purple"
                         android:textStyle="bold"
                         android:fontFamily="@font/notosanskr_medium_hestia"/>

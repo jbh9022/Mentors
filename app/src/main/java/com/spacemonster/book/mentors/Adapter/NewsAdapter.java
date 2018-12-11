@@ -36,7 +36,7 @@ import okhttp3.Response;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder>{
     Context context;
     int layout;
-    ArrayList<Notice> newsView = new ArrayList<Notice>();
+    ArrayList<Notice> newsView;
 
     public NewsAdapter(Context context, int layout, ArrayList<Notice> newsView) {
         this.context = context;

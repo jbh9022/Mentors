@@ -54,7 +54,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/change_Refresh"
+            android:id="@+id/change_Geoje_Refresh"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginTop="8dp"
@@ -65,8 +65,8 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
                 android:src="@drawable/refresh"/>
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>

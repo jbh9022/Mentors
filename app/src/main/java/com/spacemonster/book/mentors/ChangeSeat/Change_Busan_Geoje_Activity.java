@@ -52,7 +52,7 @@ public class Change_Busan_Geoje_Activity extends AppCompatActivity {
             getWindow().setStatusBarColor(getResources().getColor(R.color.white));
             //status bar 색이 흰색일 경우 검은색으로 변경
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-
+            }
             //대각선 스크롤
             SoftScroll();
             //좌석 연결
@@ -63,23 +63,37 @@ public class Change_Busan_Geoje_Activity extends AppCompatActivity {
             SeatChoice();
             //뒤로가기
             Backbtn();
+            //새로고침
+            RefreshBtn();
             //좌석 변경
-            binding.changeGeojeSeatChangeBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String seat1 = binding.changeGeojeNewName.getText().toString();
-                    String seat2 = binding.changeGeojeNewNum.getText().toString();
-                    if(seat1.equals("") || seat2.equals("")){
-                        Toast.makeText(Change_Busan_Geoje_Activity.this, "변경 가능한 자유석을 선택해 주세요", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-                        Toast.makeText(Change_Busan_Geoje_Activity.this, seat1 + " " + seat2 + "로 변경 되었습니다.", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
+            Seatchange();
     }
-
+    //좌석변경
+    private void Seatchange() {
+        binding.changeGeojeSeatChangeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String seat1 = binding.changeGeojeNewName.getText().toString();
+                String seat2 = binding.changeGeojeNewNum.getText().toString();
+                if(seat1.equals("") || seat2.equals("")){
+                    Toast.makeText(Change_Busan_Geoje_Activity.this, "변경 가능한 자유석을 선택해 주세요", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(Change_Busan_Geoje_Activity.this, seat1 + " " + seat2 + "로 변경 되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+    //새로고침
+    private void RefreshBtn() {
+        binding.changeGeojeRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(Change_Busan_Geoje_Activity.this, "새로고침", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    //뒤로가기
     private void Backbtn() {
         binding.changeGeojeBackBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,6 +159,7 @@ public class Change_Busan_Geoje_Activity extends AppCompatActivity {
             textViews[i] = (TextView) findViewById(textList[i]);
         }
     }
+    //좌석 색 변경
     private void SeatColor(){
         for(int i =0; i<29; i++){
             layouts[i].setBackgroundResource(R.color.gray2);
